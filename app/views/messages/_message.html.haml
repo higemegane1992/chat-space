@@ -1,0 +1,10 @@
+.mainchat__body__message
+  .mainchat__body__message__header
+    %p.mainchat__body__message__header__name
+      = message.user.name
+    %p.mainchat__body__message__header__date
+      = message.updated_at.strftime("%Y年%m月%d日 %H時%M分")
+  %p.mainchat__body__message__body
+    - if message.content.present?
+      = message.content
+    = image_tag message.image.url if message.image.present?
