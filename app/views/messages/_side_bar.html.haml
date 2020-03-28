@@ -2,12 +2,12 @@
   .sidebar__header
     .sidebar__header__title
       %p.sidebar__header__title__name
-        masa
+        = current_user.name
       .sidebar__header__title__links
         = link_to "#", class: "sidebar__header__title__links__link sidebar__header__title__links__link--margin" do
           = icon('far', 'edit',  class: "sidebar__header__title__links_link__icon")
           %span<>
-        = link_to "#", class: "sidebar__header__title__links__link" do
+        = link_to edit_user_path(current_user), class: "sidebar__header__title__links__link" do
           = icon('fas', 'cog',  class: "sidebar__header__title__links_link__icon")
   .sidebar__body
     .sidebar__body__group
