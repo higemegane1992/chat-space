@@ -4,14 +4,15 @@
       %p.sidebar__header__title__name
         = current_user.name
       .sidebar__header__title__links
-        = link_to "#", class: "sidebar__header__title__links__link sidebar__header__title__links__link--margin" do
+        = link_to new_group_path, class: "sidebar__header__title__links__link sidebar__header__title__links__link--margin" do
           = icon('far', 'edit',  class: "sidebar__header__title__links_link__icon")
           %span<>
         = link_to edit_user_path(current_user), class: "sidebar__header__title__links__link" do
           = icon('fas', 'cog',  class: "sidebar__header__title__links_link__icon")
   .sidebar__body
-    .sidebar__body__group
-      %p.sidebar__body__group__name
-        techcamp
-      %p.sidebar__body__group__message
-        まだメッセージはありません
+    - current_user.groups.each do |group|
+      .sidebar__body__group
+        %p.sidebar__body__group__name
+          = group.name
+        %p.sidebar__body__group__message
+          まだメッセージはありません
