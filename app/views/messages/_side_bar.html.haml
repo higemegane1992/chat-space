@@ -12,7 +12,8 @@
   .sidebar__body
     - current_user.groups.each do |group|
       .sidebar__body__group
-        %p.sidebar__body__group__name
-          = group.name
-        %p.sidebar__body__group__message
-          まだメッセージはありません
+        = link_to group_messages_path(group) do
+          %p.sidebar__body__group__name
+            = group.name
+          %p.sidebar__body__group__message
+            = group.show_last_message

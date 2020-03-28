@@ -2,33 +2,20 @@
   .mainchat__header
     .mainchat__header__group
       %p.mainchat__header__group__name
-        test
+        = @group.name
       %p.mainchat__header__group__members
-        Member : masa
-    = link_to "#", class: "mainchat__header__button" do
+        Member : 
+        - @group.users.each do |user|
+          = user.name
+    = link_to "edit", class: "mainchat__header__button" do
       Edit
   .mainchat__body
-    .mainchat__body__message
-      .mainchat__body__message__header
-        %p.mainchat__body__message__header__name
-          masa
-        %p.mainchat__body__message__header__date
-          2019/11/20(Wed) 17:43:01
-      %p.mainchat__body__message__body
-        おはよう！
-    .mainchat__body__message
-      .mainchat__body__message__header
-        %p.mainchat__body__message__header__name
-          masa
-        %p.mainchat__body__message__header__date
-          2019/11/20(Wed) 17:43:34
-      %p.mainchat__body__message__body
-        今日は夜から雨
+    = render @messages
   .mainchat__footer
-    %form.mainchat__footer__form
+    = form_for [@group, @message], html: {class: 'mainchat__footer__form'} do |f|
       .mainchat__footer__form__inputs
-        %input.mainchat__footer__form__inputs__text{:placeholder => "type a message"}
-        %label.mainchat__footer__form__inputs__label{:for => "image_input"}
-          = icon('far', 'image',  class: "mainchat__footer__form__inputs__label__icon")
-          %input#image_input{:type => "file"}
-      %input.mainchat__footer__form__submit{:type => "submit", :value => "Send"}
+        = f.text_field :content, class: 'mainchat__footer__form__inputs__text', placeholder: 'type a message'
+        = f.label :image, class: 'mainchat__footer__form__inputs__label' do
+          = icon('fas', 'image', class: 'mainchat__footer__form__inputs__label__icon')
+          = f.file_field :image, id: 'image_input'
+      = f.submit 'Send', class: 'mainchat__footer__form__submit'
