@@ -17,5 +17,5 @@
         = f.text_field :content, class: 'mainchat__footer__form__inputs__text', placeholder: 'type a message'
         = f.label :image, class: 'mainchat__footer__form__inputs__label' do
           = icon('fas', 'image', class: 'mainchat__footer__form__inputs__label__icon')
-          = f.file_field :image, id: 'image_input'
+          = f.file_field :image, id: 'message_image'
       = f.submit 'Send', class: 'mainchat__footer__form__submit'
