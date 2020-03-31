@@ -7,4 +7,4 @@
   %p.mainchat__body__message__body
     - if message.content.present?
       = message.content
-    = image_tag message.image.url if message.image.present?
+    = image_tag message.image.url, class: "mainchat__body__message__image" if message.image.present?
